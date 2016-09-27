@@ -3,20 +3,24 @@
  */
 Meteor.methods({
    addResolution(resolution) {
+       if (!Meteor.userId()){
+           throw new Meteor.error("Not Authorized");
+       }
        Resolutions.insert({
            text: resolution,
            complete: false,
-           createdAt: new Date()
+           createdAt: new Date(),
+           user: Meteor.userId()
        });
    },
 
-    toggleResolution(id, status) {
-        Resolutions.update(id, {
-            $set: {complete: !status}
+    toggleResolution(resolution) {
+        Resolutions.update(resolution._id, {
+            $set: {complete: !resolution.complete}
         })
     },
 
-    deleteResolution(id) {
-        Resolutions.remove(id);
+    deleteResolution(resolution) {
+        Resolutions.remove(resolution._id);
     }
 });

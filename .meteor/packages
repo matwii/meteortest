@@ -25,4 +25,5 @@ twbs:bootstrap
 numtel:mysql
 mquandalle:stylus
 accounts-ui
+accounts-password
 

@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 export default class ResolutionSingle extends Component {
     toggleChecked() {
         console.log(this);
-        Meteor.call('toggleResolution', this.props.resolution._id, this.props.resolution.complete);
+        Meteor.call('toggleResolution', this.props.resolution);
     }
 
     deleteResolution() {
